@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript">
+<!--
+
+// ステータスを見るボタン押下時
+function show_status()
+{
+	document.battle.battle_type.value='battle_status';
+	document.battle.submit();
+}
+
+// VSボタン押下時
+function battle_start()
+{
+	document.battle.battle_type.value='battle_start';
+	document.battle.submit();
+}
+
+
+
+
+-->
+</script>
+<body>
+	<div style = "float : left">
+	<form name="battle" action = "#" th:action="@{/MonsterBattle4}" th:object="${Form}" method="POST">
+	<br>
+	自分のポケモン
+	<br>
+	<select name="Poke_num">
+		<option th:each=" poke : ${Partylist} " th:value="${poke.getPoke_num()}" th:selected = "${SelectPoke} == ${poke.getPoke_num()}">
+			[[${poke.getPoke_name()}]]
+		</option>
+		<!--
+		<option value="Fushi" th:selected = "${SelectPoke} == 1">フシギダネ</option>
+		<option value="Hito"  th:selected = "${SelectPoke} == 2">ヒトカゲ</option>
+		<option value="Zeni"  th:selected = "${SelectPoke} == 3">ゼニガメ</option>
+		 -->
+	</select>
+	<br>
+	<input type = "submit" value = "ステータスをみる" onclick="show_status();return false;"/>
+	<br>
+	<!--
+	<th:block th:each=" SelectType : ${['SelectType']}">
+		<th:block th:text="${SelectType}"></th:block> -->
+	<br>
+
+	<br>
+	名前      ：[[${SelectType.getPoke_name()}]]<br>
+	タイプ    ：[[${SelectType.getPoke_typename1()}]]/[[${SelectType.getPoke_typename2()}]]<br>
+	HP        ：[[${SelectType.getHP()}]]<br>
+	こうげき  ：[[${SelectType.getAttack()}]]<br>
+	すばやさ  ：[[${SelectType.getSpeed()}]]<br>
+	<br>
+	<br>
+	[[${['message']}]]<br>
+	<th:block th:each=" Log : ${['Log']}">
+		<th:block th:text="${Log}">
+	</th:block>
+	<br>
+	</div>
+	<div>
+	<br>
+	<br>
+	<br>
+	<input type = "submit" value = "VS" onclick="battle_start();return false;"/>
+	<input type="hidden" name="battle_type" value="">
+	</form>
+	</div>
+
+<div style="clear:left">
+<form name="Menu_screen" action = "#" th:action="@{/MonsterBattle4}" th:object="${Form}" method="POST">
+	<input type="submit" value="メニューに戻る">
+	<input type="hidden" name="menu" value="menu">
+</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+ぼうけん<br>
+<br>
+[[${message}]]<br>
+
+<br>
+<br>
+<th:block th:if="${get_mode} == get">
+<form name="get" action = "#" th:action="@{/MonsterBattle4}" th:object="${Form}" method="POST">
+	<input type="submit" name="button" value="ゲット！">
+	<input type="hidden" name="get" value="get1">
+	<input type="hidden" name="poke_num" th:value="${yasei_num}">
+</form>
+</th:block>
+<br>
+<br>
+
+<form name="menu" action = "#" th:action="@{/MonsterBattle4}" th:object="${Form}" method="POST">
+	<input type="submit" value="メニューにもどる">
+	<input type="hidden" name="menu" value="menu">
+</form>
+</body>
+</html>

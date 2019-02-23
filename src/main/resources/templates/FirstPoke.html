@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div style = "float : left">
+さいしょのパートナーをえらんでください。
+<br>
+<br><form name="FirstPoke" action = "#" th:action="@{/MonsterBattle4}" th:object="${Form}" method="POST">
+	<select name="num">
+		<option value="1" th:selected = "${SelectPoke} == 1">フシギダネ</option>
+		<option value="4"  th:selected = "${SelectPoke} == 4">ヒトカゲ</option>
+		<option value="7"  th:selected = "${SelectPoke} == 7">ゼニガメ</option>
+	</select>
+	<br>
+	<input type = "submit" name = "button" value = "ステータスをみる"/><br><br><br>
+	<input type = "submit" name = "button" value = "けってい"/><br>
+	</form>
+
+	</div>
+	<div>
+	<br>
+	<br>
+	<th:block th:each=" firstpoke : ${First}">
+	No.        ：[[${firstpoke.getPoke_num()}]]<br>
+	タイプ     ：[[${firstpoke.getPoke_typename1()}]] / [[${firstpoke.getPoke_typename2()}]]<br>
+	HP         ：[[${firstpoke.getHP()}]]<br>
+	こうげき   ：[[${firstpoke.getAttack()}]]<br>
+	すばやさ   ：[[${firstpoke.getSpeed()}]]<br>
+	<br>
+	<br>
+
+
+	</div>
+</body>
+</html>

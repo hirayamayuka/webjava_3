@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+てもちポケモン
+<br>
+<br>
+<div style="float:left">
+<table>
+	<tr th:each="Party : ${Partylist}">
+		<form name="Menu_screen" action = "#" th:action="@{/MonsterBattle4}" th:object="${Form}" method="POST">
+			<td>
+				[[${Party.getPoke_name()}]]<br>
+			</td>
+			<td>
+				Lv:[[${Party.getLevel()}]]<br>
+			</td>
+			<td>
+				<input type = "hidden" name = "poke_num" th:value = "${Party.getPoke_num()}"/>
+				<input type = "submit" name = "show" value = "ステータス"/>
+			</td>
+		</form>
+	</tr>
+</table>
+<br>
+<br>
+<br>
+<br>
+</div>
+
+<div>
+<th:block th:each=" status : ${Pokestatus}">
+	なまえ     ：[[${status.getPoke_name()}]]<br>
+	No.        ：[[${status.getPoke_num()}]]<br>
+	タイプ     ：[[${status.getPoke_typename1()}]] / [[${status.getPoke_typename2()}]]<br>
+	HP         ：[[${status.getHP()}]]<br>
+	こうげき   ：[[${status.getAttack()}]]<br>
+	すばやさ   ：[[${status.getSpeed()}]]<br>
+</th:block>
+</div>
+
+<div style="clear:left">
+<form name="Menu_screen" action = "#" th:action="@{/MonsterBattle4}" th:object="${Form}" method="POST">
+	<input type="submit" value="メニューに戻る">
+	<input type="hidden" name="menu" value="menu">
+</form>
+</div>
+
+<br>
+</body>
+</html>

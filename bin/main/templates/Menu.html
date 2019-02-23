@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+<!--
+	function Party()
+	{
+		document.Menu_screen.item.value='Party';
+		document.Menu_screen.submit();
+	}
+
+	function Adventure()
+	{
+		document.Menu_screen.item.value='Adventure';
+		document.Menu_screen.submit();
+	}
+	function Battle()
+	{
+		document.Menu_screen.item.value='Battle';
+		document.Menu_screen.submit();
+	}
+	function Save()
+	{
+		document.Menu_screen.item.value='Save';
+		document.Menu_screen.submit();
+	}
+
+-->
+</script>
+</head>
+<body>
+メニュー<br>
+
+	<a href="" onclick="Party();return false;">てもちポケモン</a><br>
+	<a href="" onclick="Adventure();return false;">ぼうけん</a><br>
+	<a href="" onclick="Battle();return false;">バトル_1vs1</a><br>
+	<a href="" onclick="Save();return false;">セーブ</a><br>
+	[[${message}]]
+	<br>
+	<br>
+	<form name="Menu_screen" action = "#" th:action="@{/MonsterBattle4}" method="POST">
+		<input type="hidden" name="item" value="">
+
+
+	</form>
+
+
+</body>
+</html>

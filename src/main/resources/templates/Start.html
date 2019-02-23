@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+<!--
+	function New_Poke()
+	{
+		document.Start_Game.start.value='New';
+		document.Start_Game.submit();
+	}
+
+	function Continu_Poke()
+	{
+		document.Start_Game.start.value='Continu';
+		document.Start_Game.submit();
+	}
+
+-->
+</script>
+</head>
+<body>
+
+
+	<a href="" onclick="New_Poke();return false;">はじめから</a><br>
+	<a href="" onclick="Continu_Poke();return false;">つづきから</a>
+	<br>
+	<br>
+	<form name="Start_Game" action = "#" th:action="@{/MonsterBattle4}" method="POST">
+		<input type="hidden" name="start" value="">
+
+
+	</form>
+
+
+
+</body>
+</html>
